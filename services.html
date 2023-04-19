@@ -107,5 +107,17 @@ education in Nigeria at a pocket-friendly cost.</p>
    Mobile Phone Number:<b>+234 812 635 6813</b></br>You can also follow us on Facebook page: <a href="http://liberationschools.facebook.com/">Liberation Schools</a> </address>
       <p>Knowledge for Liberation, Copyright &copy; 2021</p>
     </footer>
+$('form').submit(function(e) {
+  // Prevent the default form submission
+  e.preventDefault();
+  // Convert the data to GET format
+  var formData = $(this).serialize();
+
+  // Submit the data using an Ajax GET request
+  $.get('php/echo-form-fields-get.php', formData, function(data) {
+    // Show the data returned by the server
+    $('.output').html(data);
+  });
+});
   </body>
 </html>
