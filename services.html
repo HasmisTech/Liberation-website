@@ -82,21 +82,53 @@ education in Nigeria at a pocket-friendly cost.</p>
         <aside id="sidebar">
           <div class="dark">
             <h3>Drop your message</h3>
-            <form class="quote">
-  						<div>
-  							<label>Name</label><br>
-  							<input type="text" placeholder="Name">
-  						</div>
-  						<div>
-  							<label>Email</label><br>
-  							<input type="email" placeholder="Emial Address">
-  						</div>
-  						<div>
-  							<label>Message</label><br>
-  							<textarea placeholder="Message"></textarea>
-  						</div>
-  						<button class="button_1" type="submit">Send</button>
-					</form>
+            <form method="post" name="myemailform" action="form-to-email.php">
+
+	<p>
+
+		<label for='name'>Enter Name: </label><br>
+
+		<input type="text" name="name">
+
+	</p>
+
+	<p>
+
+		<label for='email'>Enter Email Address:</label><br>
+
+		<input type="text" name="email">
+
+	</p>
+
+	<p>
+
+		<label for='message'>Enter Message:</label> <br>
+
+		<textarea name="message"></textarea>
+
+	</p>
+
+	<input type="submit" name='submit' value="submit">
+
+</form>
+
+<script language="JavaScript">
+
+// Code for validating the form
+
+// Visit http://www.javascript-coder.com/html-form/javascript-form-validation.phtml
+
+// for details
+
+var frmvalidator  = new Validator("myemailform");
+
+frmvalidator.addValidation("name","req","Please provide your name"); 
+
+frmvalidator.addValidation("email","req","Please provide your email"); 
+
+frmvalidator.addValidation("email","email","Please enter a valid email address"); 
+
+</script>
           </div>
         </aside>
       </div>
@@ -107,17 +139,5 @@ education in Nigeria at a pocket-friendly cost.</p>
    Mobile Phone Number:<b>+234 812 635 6813</b></br>You can also follow us on Facebook page: <a href="http://liberationschools.facebook.com/">Liberation Schools</a> </address>
       <p>Knowledge for Liberation, Copyright &copy; 2021</p>
     </footer>
-$('form').submit(function(e) {
-  // Prevent the default form submission
-  e.preventDefault();
-  // Convert the data to GET format
-  var formData = $(this).serialize();
-
-  // Submit the data using an Ajax GET request
-  $.get('php/echo-form-fields-get.php', formData, function(data) {
-    // Show the data returned by the server
-    $('.output').html(data);
-  });
-});
   </body>
 </html>
